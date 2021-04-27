@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
 // Reference: https://leetcode.com/problems/implement-trie-prefix-tree/
@@ -52,7 +51,7 @@ class Trie{
         }
 };
 
-// Will work for all ascii strings
+/* Will work for all ascii strings */
 class Generic_Trie {
 
     map<char, Generic_Trie *> children = {};
