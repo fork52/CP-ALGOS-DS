@@ -33,3 +33,5 @@
 
 # Ignore .vscode files
 *.vscode
+*.bin
+*.cph
