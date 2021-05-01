@@ -14,11 +14,16 @@ References:
     3) CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
 */
 
-template< typename T1>
+
 /*
+    Implementation of Fenwick Tree supporting:
+    Point Increments/Updates and Range Queries.
+
     Note:
-    The fenwick array is 1-indexed unlike the orgininal array 
+    The fenwick array is 1-indexed unlike the orgininal array.
+    Please keep this in mind when you query!
 */
+template< typename T1>
 class Fenwick_Tree{
 public:
     int n;
@@ -45,7 +50,7 @@ public:
 
 
     /*Returns the sum of elements from 1....i in arr*/
-    int query(int i){
+    int range_query(int i){
         T1 total = 0;
         while( i > 0){
             total += fenwick[i];
@@ -55,7 +60,7 @@ public:
     }
 
     /* Add certain value 'x' to index i */
-    void add(int i, T1 x){
+    void point_add(int i, T1 x){
         while(i < n){
             fenwick[i] += x;
             i += i & -i;
@@ -68,5 +73,5 @@ public:
 int main(){
     vector<long long> arr = {1,2,3,4,5,6};
     Fenwick_Tree<long long> FT = Fenwick_Tree<long long>(arr);
-    cout << FT.query(6) << endl; 
+    cout << FT.range_query(6) << endl; 
 }
