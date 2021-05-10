@@ -106,24 +106,3 @@ public:
         point_add(r + 1, -delta);
     }
 };
-
-
-int main()
-{
-    vector<long long> arr = {1, 2, 3, 4, 5, 6};
-    Fenwick_Tree_PQRU<long long> FT = Fenwick_Tree_PQRU<long long>(arr);
-
-    for (int ind = 1; ind <= arr.size(); ind++)
-    {
-        cout << FT.point_query(ind) << " ";
-    }
-    cout << endl;
-
-    FT.range_update(2, 3, 10);
-
-    for (int ind = 1; ind <= arr.size(); ind++)
-    {
-        cout << FT.point_query(ind) << " ";
-    }
-    cout << endl;
-}
