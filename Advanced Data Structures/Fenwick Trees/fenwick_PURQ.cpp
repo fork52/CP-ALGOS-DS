@@ -24,7 +24,7 @@ References:
     Please keep this in mind when you query!
 */
 template <typename T1>
-class Fenwick_Tree
+class Fenwick_Tree_PURQ
 {
 public:
     int n;
@@ -42,14 +42,13 @@ private:
 
 public:
     // Empty Constructor
-    Fenwick_Tree() {}
+    Fenwick_Tree_PURQ() {}
 
     /* Constructs a Fenwick Tree for the given array*/
-    Fenwick_Tree(vector<T1> &arr)
+    Fenwick_Tree_PURQ(vector<T1> &arr)
     {
         n = arr.size() + 1;
         fenwick = vector<T1>(n, 0);
-
         copy(arr.begin(), arr.end(), fenwick.begin() + 1);
 
         int parent_ind;
@@ -69,7 +68,6 @@ public:
         T1 total = 0;
         while (i > 0)
         {
-            total += fenwick[i];
             total = f(total, fenwick[i]);
             i -= i & -i; //flip last set bit
         }
@@ -81,34 +79,23 @@ public:
         return f_rev(range_query(r), range_query(l - 1));
     }
 
-    T1 range_query_0indexed(int i)
-    {
-        return range_query(i + 1);
-    }
-
-    T1 range_query_0indexed(int l, int r)
-    {
-        return f_rev(range_query_0indexed(r + 1), range_query_0indexed(l));
-    }
     /* Add certain value 'x' to index i */
     void point_update(int i, T1 x)
     {
+        #ifdef DEBUG
+                assert(i > 0 && i < n);
+        #endif
         while (i < n)
         {
             fenwick[i] = f(fenwick[i], x);
             i += i & -i;
         }
     }
-
-    void point_update_0indexed(int i, T1 x)
-    {
-        return point_update(i + 1, x);
-    }
 };
 
 int main()
 {
     vector<long long> arr = {1, 2, 3, 4, 5, 6};
-    Fenwick_Tree<long long> FT = Fenwick_Tree<long long>(arr);
+    Fenwick_Tree_PURQ<long long> FT = Fenwick_Tree_PURQ<long long>(arr);
     cout << FT.range_query(1, 4) << endl;
 }

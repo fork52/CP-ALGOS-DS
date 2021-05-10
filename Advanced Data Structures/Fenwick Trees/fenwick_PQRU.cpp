@@ -16,7 +16,7 @@ References:
     Please keep this in mind when you query!
 */
 template <typename T1>
-class Fenwick_Tree
+class Fenwick_Tree_PQRU
 {
 public:
     int n;
@@ -43,13 +43,13 @@ private:
 
 public:
     // Empty Constructor
-    Fenwick_Tree() {}
+    Fenwick_Tree_PQRU() {}
 
     /* 
         Constructs a Fenwick Tree(1 - indexed) for the given array of size n+1
         Time: O(n)
     */
-    Fenwick_Tree(vector<T1> &arr)
+    Fenwick_Tree_PQRU(vector<T1> &arr)
     {
         n = arr.size() + 1;
         fenwick = vector<T1>(n, 0);
@@ -84,15 +84,10 @@ public:
         T1 total = 0;
         while (i > 0)
         {
-            total += fenwick[i];
+            total = f(total, fenwick[i]);
             i -= i & -i; //flip last set bit
         }
         return total;
-    }
-
-    T1 point_query_0indexed(int i)
-    {
-        return point_query(i + 1);
     }
 
     /*
@@ -105,16 +100,11 @@ public:
         point_update(l, val);
         point_update(r + 1, -val);
     }
-
-    void range_update_0indexed(int l, int r, int val)
-    {
-        range_update(l + 1, r + 1, val);
-    }
 };
 int main()
 {
     vector<long long> arr = {1, 2, 3, 4, 5, 6};
-    Fenwick_Tree FT = Fenwick_Tree(arr);
+    Fenwick_Tree_PQRU FT = Fenwick_Tree_PQRU(arr);
 
     for (int ind = 1; ind <= arr.size(); ind++)
     {
