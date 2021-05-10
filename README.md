@@ -2,10 +2,10 @@
 
 A collection of **Competitive Coding C++ Snippets** created by [Dhruvam Kothari](https://github.com/decimalpack) and [Mrunank Mistry](https://github.com/fork52).
 
-The repository is a collection of C++ utility functions and classes in competitive coding which come handy in Competitive Coding. 
+The repository is a collection of C++ utility functions and classes which come handy in Competitive Coding. 
 
 ## Documentation
-Read the docstrings for each class/function/method. Also checkout the main functions for each file for a usage examples.
+Read the docstrings for each class/function/method. Also checkout the main function for each file which demonstrates the usage.
 
 ## License
 The repository is licensed under [Apache License][license-url] .
