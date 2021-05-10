@@ -14,7 +14,7 @@ References:
 */
 
 /*
-    Implementation of Fenwick Tree supporting:
+    Implementation of classic Fenwick Tree supporting:
     Point Increments/Updates and Range Queries.
 
     Works for reversbile functions like add, subtract, multiply
@@ -62,7 +62,9 @@ public:
         }
     }
 
-    /*Returns the sum of elements from 1....i in arr*/
+    /*
+       Returns result after performing operation f(defualt:plus) for the range [ 1, i ]
+    */
     T1 range_query(int i)
     {
         T1 total = 0;
@@ -74,20 +76,26 @@ public:
         return total;
     }
 
+    /*  
+        Returns result after performing operation f(defualt:plus) for the range [ l, r ] 
+    */
     T1 range_query(int l, int r)
     {
         return f_rev(range_query(r), range_query(l - 1));
     }
 
-    /* Add certain value 'x' to index i */
-    void point_update(int i, T1 x)
+    /* 
+        Performs f ( fenwick[i], delta )
+        By default adds delta at index i.
+    */
+    void point_add(int i, T1 delta)
     {
         #ifdef DEBUG
                 assert(i > 0 && i < n);
         #endif
         while (i < n)
         {
-            fenwick[i] = f(fenwick[i], x);
+            fenwick[i] = f(fenwick[i], delta);
             i += i & -i;
         }
     }

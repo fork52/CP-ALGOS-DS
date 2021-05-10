@@ -2,7 +2,9 @@
 using namespace std;
 
 /*
-
+Related Problems:
+    - https://binarysearch.com/problems/Range-Update
+    
 References:
     1) CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
 */
@@ -31,12 +33,16 @@ private:
     {
         return x - y;
     }
-    /* Add certain value 'x' to index i */
-    void point_update(int i, T1 x)
+
+    /* 
+        Performs f ( fenwick[i], delta )
+        By default adds delta at index i.
+    */
+    void point_add(int i, T1 delta)
     {
         while (i < n)
         {
-            fenwick[i] = f(fenwick[i], x);
+            fenwick[i] = f(fenwick[i], delta);
             i += i & -i;
         }
     }
@@ -78,7 +84,6 @@ public:
         Assumes 1 based indexing
         Time: O(logn)
     */
-
     T1 point_query(int i)
     {
         T1 total = 0;
@@ -91,20 +96,22 @@ public:
     }
 
     /*
-        Increments values in the range l,l+1,... r by val
+        Performs f(fenwick[i], delta) for all l <= i <= r
         Assumes 1 based indexing
         Time : O(logn * 2)
     */
-    void range_update(int l, int r, int val)
+    void range_update(int l, int r, int delta)
     {
-        point_update(l, val);
-        point_update(r + 1, -val);
+        point_add(l, delta);
+        point_add(r + 1, -delta);
     }
 };
+
+
 int main()
 {
     vector<long long> arr = {1, 2, 3, 4, 5, 6};
-    Fenwick_Tree_PQRU FT = Fenwick_Tree_PQRU(arr);
+    Fenwick_Tree_PQRU<long long> FT = Fenwick_Tree_PQRU<long long>(arr);
 
     for (int ind = 1; ind <= arr.size(); ind++)
     {
