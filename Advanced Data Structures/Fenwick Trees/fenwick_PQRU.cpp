@@ -24,7 +24,7 @@ public:
 
 private:
     /* Add certain value 'x' to index i */
-    void point_add(int i, T1 x){
+    void point_update(int i, T1 x){
         while(i < n){
             fenwick[i] += x;
             i += i & -i;
@@ -82,9 +82,9 @@ public:
         Assumes 1 based indexing
         Time : O(logn * 2)
     */
-    void range_add(int l, int r, int val) {
-        point_add(l, val);
-        point_add(r + 1, -val);
+    void range_update(int l, int r, int val) {
+        point_update(l, val);
+        point_update(r + 1, -val);
     }
 
 };
@@ -99,7 +99,7 @@ int main(){
     }
     cout << endl;
 
-    FT.range_add(2,3,10);
+    FT.range_update(2,3,10);
 
     for(int ind = 1; ind <= arr.size(); ind++){
         cout << FT.point_query(ind) << " "; 

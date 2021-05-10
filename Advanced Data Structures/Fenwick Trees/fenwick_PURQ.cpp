@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 /*
 Problems:
     https://binarysearch.com/problems/Range-Query-on-a-List-Mutable
 
-My Editorial:
+Fork52 Editorial:
     https://binarysearch.com/problems/Range-Query-on-a-List-Mutable/editorials/4533602
     
 References:
@@ -18,6 +17,8 @@ References:
 /*
     Implementation of Fenwick Tree supporting:
     Point Increments/Updates and Range Queries.
+
+    Works for reversbile functions like add, subtract, multiply
 
     Note:
     The fenwick array is 1-indexed unlike the orgininal array.
@@ -60,7 +61,7 @@ public:
     }
 
     /* Add certain value 'x' to index i */
-    void point_add(int i, T1 x){
+    void point_update(int i, T1 x){
         while(i < n){
             fenwick[i] += x;
             i += i & -i;

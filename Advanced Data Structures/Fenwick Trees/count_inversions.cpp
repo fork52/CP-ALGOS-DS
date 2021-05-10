@@ -36,6 +36,16 @@ public:
     }
 };
 
+
+/*
+    If arr is of size n, the function rescales
+    all the elements present in the array in 
+    the range 1 .... min(n, no_of_unique_elements)
+
+    Modifies the array in place.
+
+    
+*/
 void rescale(vector<int> &arr){
     
     vector<int> cpy = arr;
@@ -76,10 +86,13 @@ int main(){
 
     Fenwick_Tree<int> FT = Fenwick_Tree<int>(maxe);
 
-    int count = 0 , no;
+
+    // For counting inversions in the array
+    int count = 0 ;
+
 
     for(int i=0; i < arr.size() ; i++){
-        no = arr[i];
+        int no = arr[i];
         count += FT.query(maxe) - FT.query(no);
         FT.add(no , 1);
     }
