@@ -13,6 +13,7 @@ using namespace std;
 
 /*
 	Assumptions:
+		- Graph is directed
 		- Adjacency list is of size n where n is the number of nodes.
 */
 template<typename T1>
@@ -27,7 +28,9 @@ struct Graph
 
 	vector<vector<T1>> graph;
 	vector<node_status> status;
-	
+
+	Graph(){}	
+
 	/*
 		Initializes the graph with adjacency list passed.
 		Intitializes the status array to unvisited for all nodes.
@@ -71,8 +74,8 @@ struct Graph
 
 
 
-int main(){
-	vector< vector<int> > adj = {{0}};
-	Graph<int> g(adj);
-	cout << g.is_cyclic();
-}
+// int main(){
+// 	vector< vector<int> > adj = {{0}};
+// 	Graph<int> g(adj);
+// 	cout << g.is_cyclic();
+// }
