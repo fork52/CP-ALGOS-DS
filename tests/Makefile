@@ -1,5 +1,4 @@
 test:
-	g++ main_tests.o fenwick_PQRU.cpp -o tests && ./tests -r compact
+	g++ *.o -o tests && ./tests -D 1
 init:
-	g++ -DDEBUG --std=c++17 main_tests.cpp -c 
-	g++ -DDEBUG --std=c++17 fenwick_PQRU.cpp -c 
+	g++ -DDEBUG -O2 --std=c++17 *.cpp -c 
