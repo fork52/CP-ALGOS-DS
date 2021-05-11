@@ -1,27 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 /*
-Problems:
-    https://binarysearch.com/problems/Range-Query-on-a-List-Mutable
-
-Fork52 Editorial:
-    https://binarysearch.com/problems/Range-Query-on-a-List-Mutable/editorials/4533602
-    
 References:
-    1) Stable-Sort: https://youtu.be/uSFzHCZ4E-8
-    2) Luv: https://youtu.be/DPiY9wFxGIw
-    3) CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
+    CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
 */
 
 /*
-    Implementation of classic Fenwick Tree(1-based indexing) supporting:
+    Implementation of classic Fenwick Tree(0-based indexing) supporting:
     Point Increments/Updates and Range Queries.
 
     Works for reversbile functions like add, subtract, multiply
 
     Note:
-    The fenwick array is 1-indexed unlike the orgininal array.
-    Please keep this in mind when you query!
+        The fenwick array is 0-indexed.
+        Please keep this in mind when you query!
 */
 template <typename T1>
 class Fenwick_Tree_PURQ
@@ -47,14 +39,14 @@ public:
     /* Constructs a Fenwick Tree for the given array*/
     Fenwick_Tree_PURQ(vector<T1> &arr)
     {
-        n = arr.size() + 1;
+        n = arr.size();
         fenwick = vector<T1>(n, 0);
-        copy(arr.begin(), arr.end(), fenwick.begin() + 1);
+        copy(arr.begin(), arr.end(), fenwick.begin());
 
         int parent_ind;
-        for (int i = 1; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
-            parent_ind = i + (i & -i);
+            parent_ind = i | (i+1);
             if (parent_ind < n)
             {
                 fenwick[parent_ind] = f(fenwick[parent_ind], fenwick[i]);
@@ -68,10 +60,10 @@ public:
     T1 range_query(int i)
     {
         T1 total = 0;
-        while (i > 0)
+        while (i >= 0)
         {
             total = f(total, fenwick[i]);
-            i -= i & -i; //flip last set bit
+            i = ( i & (i+1) ) - 1; //flip last set bit
         }
         return total;
     }
@@ -96,14 +88,16 @@ public:
         while (i < n)
         {
             fenwick[i] = f(fenwick[i], delta);
-            i += i & -i;
+            i = i | (i+1);
         }
     }
 };
 
-int main()
-{
-    vector<long long> arr = {1, 2, 3, 4, 5, 6};
-    Fenwick_Tree_PURQ<long long> FT = Fenwick_Tree_PURQ<long long>(arr);
-    cout << FT.range_query(1, 4) << endl;
-}
+// int main()
+// {
+//     vector<long long> arr = {1, 2, 3, 4, 5, 6};
+//     Fenwick_Tree_PURQ<long long> FT = Fenwick_Tree_PURQ<long long>(arr);
+//     cout << FT.range_query(0, 3) << endl;
+//     FT.point_add(0,99);
+//     cout << FT.range_query(0,0) << endl;
+// }
