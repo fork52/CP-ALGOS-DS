@@ -5,6 +5,7 @@ Here, I am trying to note down some important observations I made while reading 
 [Link to CP algos blog on KMP](https://cp-algorithms.com/string/prefix-function.html)
 [Link to problem on binarysearch for prefix function](https://binarysearch.com/problems/Longest-Prefix-that-Is-a-Suffix)
 [Link to problem on binarysearch for KMP search](https://binarysearch.com/problems/Find-a-Linked-List-in-a-Binary-Tree)
+[Link of problem on Longest Pallindromic Suffix](https://binarysearch.com/problems/Make-Palindrome-by-Adding-a-Suffix)
 
 
 ## Naive Solution

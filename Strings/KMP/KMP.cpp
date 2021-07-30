@@ -8,6 +8,7 @@ References:
 Relevant Problems:
     https://binarysearch.com/problems/Longest-Prefix-that-Is-a-Suffix
     https://binarysearch.com/problems/Find-a-Linked-List-in-a-Binary-Tree
+    https://binarysearch.com/problems/Make-Palindrome-by-Adding-a-Suffix
 */
 
 
@@ -60,7 +61,7 @@ vector<int> prefix_function(string s) {
 
 /*
     Returns a vector<int> containing all the starting indices in
-    `txt` such that txt[index: index + pattern] = pattern. Overlapping
+    `txt` such that txt[index: index + pattern_size] = pattern. Overlapping
     string matches are also considered.
 
     Time Complexity: O(n + m)
