@@ -29,7 +29,7 @@ public:
     vector<vector<T1>> components;
     vector<bool> vis;
 
-    vector<T1> node_to_sccRoot;             // For mapping to node to scc Reperesntative.
+    vector<T1> node_to_sccRoot;             // For mapping node to scc Reperesntative.
     vector<vector<T1>> condensation_graph;
 
     Kosaraju_SCC(vector<vector<T1>> &adj_list){
