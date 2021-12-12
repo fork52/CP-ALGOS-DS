@@ -15,7 +15,7 @@ void disp_vec( vector<T> &arr){
 
 /*
     Reference: 
-        https://cses.fi/problemset/task/1693
+        https://cses.fi/problemset/task/1691
         https://youtu.be/xR4sGgwtR2I
         https://youtu.be/8MpoO2zA2l4
 */
@@ -70,7 +70,7 @@ class EulerianGraph{
         Finds a node in the graph which has odd degree.
         Returns -1 if such a node does not exist.
     */
-    int getNodeWithOddDegree(){
+    T1 getNodeWithOddDegree(){
         for(int node = 0; node < n; node++){
             if( degree[node] & 1) return node;
         }  
