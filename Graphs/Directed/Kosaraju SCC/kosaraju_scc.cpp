@@ -63,6 +63,7 @@ public:
     void _dfs2(T1 node, int comp_ind){
         vis[node] = true;
         components[comp_ind].push_back(node);
+        node_to_sccRoot[node] = comp_ind;
 
         for(auto nei : rev_graph[node]){
             if(vis[nei] == false){
@@ -79,7 +80,7 @@ public:
         
         vis = vector<bool>(n, false);
 
-        // Random order dfs on the graph
+        // Random order dfs on the graph to generate a stack 
         for(T1 node = 0; node < n; node++){
             if(vis[node] == false){
                 _dfs1(node);
@@ -91,7 +92,9 @@ public:
         fill(vis.begin(), vis.end(), false);
 
         // Perform dfs again in the order present in stack to find SCCs
-        int component_index = 0; 
+        int component_index = 0;
+        node_to_sccRoot.resize(n);
+
         while(!st.empty()){
             T1 node = st.top(); st.pop();
             if(vis[node] == false){
@@ -108,15 +111,9 @@ public:
     */
     void generate_condensation_graph(){
         int no_of_components = components.size();
-        node_to_sccRoot = vector<T1>(n);
 
         condensation_graph = vector<vector<T1>>(no_of_components);
 
-        for(int c = 0; c < no_of_components; c++){
-            for(auto node : components[c]){
-                node_to_sccRoot[node] = c;
-            }
-        }
 
         for(int node = 0; node < n; node++){
             int sccRoot1 = node_to_sccRoot[node];
@@ -164,5 +161,19 @@ int main(){
         cout << c << " : "; disp_vec(obj.condensation_graph[c]);
     }   
 
+    /*
+    Expected output:
+
+    No of components: 3
+    0 2 1
+    4 3 5
+    6 7
+
+    Condensation graph :
+    0 : 1
+    1 : 2
+    2 :
+
+    */
 
 }
