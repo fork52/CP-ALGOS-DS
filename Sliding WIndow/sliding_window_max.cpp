@@ -30,7 +30,7 @@ class MaxQueue{
 
 /*
 Below code demonstrates how the class can be used to solve the 
-sliding-window-maximum proble with ease.
+sliding-window-maximum problem with ease.
 */
 
 // Reference: https://leetcode.com/problems/sliding-window-maximum/
@@ -39,17 +39,16 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> ans;
         MaxQueue mxq;
         
-        for(int i = 0;  i < k; i++ ){
+        for(int i = 0; i < k; i++){
             mxq.push_back(i, nums);
         }
         
         ans.push_back(mxq.get_max(nums));
         
-        for(int i = k; i < n; i++ ){
+        for(int i = k; i < n; i++){
             mxq.push_back(i, nums);
             mxq.pop_front(i - k);
             ans.push_back(mxq.get_max(nums));
-
         }
         
         return ans;
