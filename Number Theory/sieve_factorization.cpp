@@ -18,7 +18,11 @@ void display_factorization(ll num, vector<pair<ll, ll>>& factorization){
     cout << "\n";
 }
 
-
+/*
+    Performs Prime Sieve in the constructor based on the max number you want to factorize.
+    Time Complexity: O(sqrt(max_number) * log(sqrt(max_number)))
+    Uses those primes for factorization.
+*/
 class Factorizer{
 public:
     ll limit;
@@ -95,7 +99,6 @@ public:
     }
 
 };
-
 
 
 int main(){
