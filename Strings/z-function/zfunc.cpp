@@ -23,6 +23,8 @@ In other words, is the length of the longest string that is,
 at the same time, a prefix of and a prefix of the suffix of starting at.
 
 Reference: https://cp-algorithms.com/string/z-function.html
+
+Time Complexity: O(n), Space Complexity: O(n)
 */
 vector<long long> z_function(string s) {
     long long n = (long long) s.length();
