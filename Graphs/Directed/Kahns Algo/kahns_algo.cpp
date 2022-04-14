@@ -77,7 +77,7 @@ class Kahns_Algo{
 
         // Needs to be checked before outputing the topological ordering.
         // if isCyclic is True, then the topological ordering does not exist.
-        isCyclic = (E == visitedEdgeCount); 
+        isCyclic = (E != visitedEdgeCount); 
     }
 };
 
