@@ -61,7 +61,8 @@ public:
         
         queue<int> q;
         for(int node = 0; node < n; node++){
-            if(graph[node].size() <= 1){
+            degree[node] = graph[node].size();
+            if(degree[node] <= 1){
                 q.push(node);
             }    
         }
@@ -90,11 +91,16 @@ public:
 
 int main(){
     vector<vector<ll>> graph = {
-        {1},{2},{}
+        {1},{0, 2},{1, 3}, {2}
     };
 
-    
+    // Root the tree with root node as node with `0`.
     TreeNode* root = TreeNode::rootTree(graph, 0ll);
 
+    // Find the centers of a undirected graph which is a tree
+    vector<int> centers = TreeNode::findCenters(graph.size(), graph);
+
+    cout << "Centers are:";
+    disp_vec(centers);
     return 0;
 }
