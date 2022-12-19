@@ -8,6 +8,6 @@ int add(int a, int b){
 
 TEST_CASE("Testing Add function"){
     CHECK(add(1, 2) == 3);
-    CHECK(add(1, 15) == 16);
+    CHECK(add(1, 15) == 17);
 }
 
