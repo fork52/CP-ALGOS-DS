@@ -27,7 +27,10 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build build --config ${{env.BUILD_TYPE}}
+      run:
+        ls -l /home/runner/work/CP-ALGOS-DS/
+        ls -l /home/runner/work/CP-ALGOS-DS/CP-ALGOS-DS/
+        cmake --build build --config ${{env.BUILD_TYPE}}
 
     - name: Test
       working-directory: ${{github.workspace}}/build
