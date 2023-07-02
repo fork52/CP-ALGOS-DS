@@ -4,6 +4,10 @@ A collection of **Competitive Coding C++ Snippets** created by [Dhruvam Kothari]
 
 The repository is a collection of C++ utility functions and classes which come handy in Competitive Coding. 
 
+## Local Repo Setup
+- You need to install Cpp 17 compiler and [CMake](https://cmake.org/install/). 
+- If you are using Visual Studio Code, use the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack).
+
 ## Documentation
 Read the docstrings for each class/function/method. Also checkout the main function for each file which demonstrates the usage.
 
