@@ -36,3 +36,6 @@
 *.bin
 *.cph
 *.object
+
+#Ignore build directory
+build
