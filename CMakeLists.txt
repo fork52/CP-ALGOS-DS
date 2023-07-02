@@ -21,6 +21,7 @@ add_executable(
   number_theory_tests  
   tests/Number-Theory/test_prime_sieve.cpp
   tests/Number-Theory/test_sieve_factorization.cpp
+  tests/Graphs/Undirected/DSU/test_dsu.cpp
 )
 
 
