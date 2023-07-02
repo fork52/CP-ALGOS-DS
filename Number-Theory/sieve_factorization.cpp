@@ -102,13 +102,13 @@ public:
 };
 
 
-int main(){
-    ll num = 1e9;
-    Factorizer obj(1e9);
-    vector<ll> facts = obj.prime_factorize_simple(num);
-    vector<pair<ll, ll>> facts2 = obj.prime_factorize(num);
+// int main(){
+//     ll num = 1e9;
+//     Factorizer obj(1e9);
+//     vector<ll> facts = obj.prime_factorize_simple(num);
+//     vector<pair<ll, ll>> facts2 = obj.prime_factorize(num);
 
-    cout << "Factors of " << num << " are: "; 
-    disp_vec(facts);
-    display_factorization(num, facts2);
-} 
+//     cout << "Factors of " << num << " are: "; 
+//     disp_vec(facts);
+//     display_factorization(num, facts2);
+// } 

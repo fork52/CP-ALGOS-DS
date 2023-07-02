@@ -18,16 +18,17 @@ enable_testing()
 
 # Specify test and executables
 add_executable(
-  prime_sieve_test  
+  number_theory_tests  
   tests/Number-Theory/test_prime_sieve.cpp
+  tests/Number-Theory/test_sieve_factorization.cpp
 )
 
 
 target_link_libraries(
-  prime_sieve_test
+  number_theory_tests
   GTest::gtest_main
 )
 
 include(GoogleTest)
 include(Dart)
-gtest_discover_tests(prime_sieve_test)
+gtest_discover_tests(number_theory_tests)
