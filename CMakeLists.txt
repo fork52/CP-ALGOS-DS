@@ -16,20 +16,33 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-# Specify test and executables
+# Number Theory executable
 add_executable(
-  number_theory_tests  
+  number_theory_tests                  
   tests/Number-Theory/test_prime_sieve.cpp
   tests/Number-Theory/test_sieve_factorization.cpp
+)
+
+# Graph executable
+add_executable(
+  graph_tests  
   tests/Graphs/Undirected/DSU/test_dsu.cpp
 )
 
-
+# Number-Theory Tests
 target_link_libraries(
   number_theory_tests
   GTest::gtest_main
 )
 
+# Graph tests
+target_link_libraries(
+  graph_tests
+  GTest::gtest_main
+)
+
+
 include(GoogleTest)
 include(Dart)
 gtest_discover_tests(number_theory_tests)
+gtest_discover_tests(graph_tests)
