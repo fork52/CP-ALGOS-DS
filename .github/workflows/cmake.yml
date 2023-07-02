@@ -27,13 +27,16 @@ jobs:
         ls -l /home/runner/work/CP-ALGOS-DS/
         ls -l /home/runner/work/CP-ALGOS-DS/CP-ALGOS-DS/
         cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        
+    - name: Check
+      run: ls -l /home/runner/work/CP-ALGOS-DS/
 
+    - name: Check
+      run: ls -l /home/runner/work/CP-ALGOS-DS/CP-ALGOS-DS/
+      
     - name: Build
       # Build your program with the given configuration
-      run:
-        ls -l /home/runner/work/CP-ALGOS-DS/
-        ls -l /home/runner/work/CP-ALGOS-DS/CP-ALGOS-DS/
-        cmake --build build --config ${{env.BUILD_TYPE}}
+      run: cmake --build build --config ${{env.BUILD_TYPE}}
 
     - name: Test
       working-directory: ${{github.workspace}}/build
