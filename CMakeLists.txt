@@ -27,6 +27,7 @@ add_executable(
 add_executable(
   graph_tests  
   tests/Graphs/Undirected/DSU/test_dsu.cpp
+  tests/Graphs/Directed/Binary-Lifting/test_kth_ancestor.cpp
 )
 
 # Number-Theory Tests
