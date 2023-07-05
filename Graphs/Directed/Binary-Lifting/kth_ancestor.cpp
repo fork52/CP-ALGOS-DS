@@ -29,15 +29,18 @@ private:
  // The max Depth of the tree.
  int maxDepth;
 
- std::vector<int> depth;
+
 
 public:
+    // Stores the depths of the nodes
+    std::vector<int> depth;
+
     /*
     * Constructor
     * @param tree An adjacency list of size N where for each node 
     *       we store its list of children.
     */
-    KthAncestorOfNode(int N, std::vector<std::vector<int>>& tree){
+    KthAncestorOfNode(const int N, const std::vector<std::vector<int>>& tree){
         this->N = N;
         this->ROOT = findRoot(tree);
 
@@ -105,7 +108,7 @@ private:
     *       we store its list of children.
     * @returns Root of the tree
     */
-    int findRoot(std::vector<std::vector<int>>& tree){
+    int findRoot(const std::vector<std::vector<int>>& tree){
         std::vector<int> inDegree(N, 0);
         for(int node = 0; node < N; node++){
             for(auto child: tree[node]){
@@ -127,7 +130,7 @@ private:
     * @param tree An adjacency list of size N where for each node 
     *       we store its list of children.
     */
-    void calculateDepths(int root, std::vector<std::vector<int>>& tree){
+    void calculateDepths(int root, const std::vector<std::vector<int>>& tree){
         std::queue<std::pair<int, int>> q;
         q.push({ROOT, 0});
         while(!q.empty()){
