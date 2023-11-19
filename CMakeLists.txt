@@ -16,6 +16,12 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+# Advanced-Data-Structures executable
+add_executable(
+  advanced_data_structure_tests                  
+  tests/Advanced-Data-Structures/test_merge_sort_tree.cpp
+)
+
 # Number Theory executable
 add_executable(
   number_theory_tests                  
@@ -35,14 +41,20 @@ target_link_libraries(
   GTest::gtest_main
 )
 
+# Advanced Data-Structure Tests
+target_link_libraries(
+  advanced_data_structure_tests  
+  GTest::gtest_main
+)
+
 # Graph tests
 target_link_libraries(
   graph_tests
   GTest::gtest_main
 )
 
-
 include(GoogleTest)
 include(Dart)
 gtest_discover_tests(number_theory_tests)
 gtest_discover_tests(graph_tests)
+gtest_discover_tests(advanced_data_structure_tests)
