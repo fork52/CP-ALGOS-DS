@@ -4,7 +4,7 @@
 
 class LogFactorizer
 {
-    int n;
+    long long n;
     std::vector<long long> smallestPrimeFactor;
 
     void init()
@@ -12,12 +12,12 @@ class LogFactorizer
         this->smallestPrimeFactor.resize(n);
         std::iota(smallestPrimeFactor.begin(), smallestPrimeFactor.end(), 0ll);
 
-        for (int i = 4; i <= n; i += 2)
+        for (long long i = 4; i <= n; i += 2)
         {
             smallestPrimeFactor[i] = 2;
         }
 
-        for (int i = 3; i * i <= n; i += 2)
+        for (long long i = 3; i * i <= n; i += 2)
         {
             if (smallestPrimeFactor[i] == i)
             {
