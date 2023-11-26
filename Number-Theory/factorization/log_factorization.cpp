@@ -46,6 +46,10 @@ public:
         }
         return primeFactors;
     }
+
+    bool isPrime(int x){
+        return (x != 1) && (this->smallestPrimeFactor[x] == x);
+    }
 };
 
 // int main(){
