@@ -1,7 +1,7 @@
 #include <vector>
 #include <bitset>
 
-/* sieve of eratosthenes */
+/* Sieve of eratosthenes */
 
 /* Returns a std::vector of size n*/
 std::vector<bool> bool_prime_sieve(int n){
@@ -11,9 +11,9 @@ std::vector<bool> bool_prime_sieve(int n){
         prime[i] = false;
     }
 
-    for(int i = 3 ; i <= n ; i += 2){
+    for(int i = 3 ; i * i <= n ; i += 2){
         if(prime[i]){
-            for(int j = 2 * i; j <= n ; j += i){
+            for(int j = i * i; j <= n ; j += i){
                 prime[j] = false;
             }
         }
@@ -23,22 +23,22 @@ std::vector<bool> bool_prime_sieve(int n){
 
 
 /*
-    Use bitsets
+    Uses bitsets
     Note that the size of the bitset should be
     same as what you define in the function.
     (Just for sanity)
 */
-std::bitset<10005> bits_prime_sieve(int n){
-    std::bitset<10005> prime;
+std::bitset<100000> bits_prime_sieve(int n){
+    std::bitset<100000> prime;
     prime.set();
     prime[0] = prime[1] = 0;
     for(int i = 4; i <= n ; i += 2){
         prime[i] = 0;
     }
 
-    for(int i = 3 ; i <= n ; i += 2){
+    for(int i = 3 ; i * i <= n ; i += 2){
         if(prime[i]){
-            for(int j = 2 * i; j <= n ; j += i){
+            for(int j = i * i; j <= n ; j += i){
                 prime[j] = 0;
             }
         }

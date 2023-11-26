@@ -16,6 +16,7 @@ void disp_vec(std::vector<T> &arr){
 /*
     Returns the prime factorization of a number in the form:
     (prime1, cnt1), (prime2, cnt2) ....
+    Time Complexity: O(sqrt(n))
 */
 std::vector<std::pair<ll, ll>> prime_factorization(ll n) {
     std::vector<std::pair<ll, ll>> factorization;
@@ -50,6 +51,7 @@ std::vector<std::pair<ll, ll>> prime_factorization(ll n) {
 
 /*
     Returns the prime factorization of a number in the form of a std::vector.
+    Time Complexity: O(sqrt(n))
 */
 std::vector<ll> prime_factorization_simple(ll n) {
     std::vector<ll> factorization;

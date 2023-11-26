@@ -39,3 +39,6 @@
 
 #Ignore build directory
 build
+
+# Logs
+debug.log

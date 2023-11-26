@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-
 using namespace std;
+
 using ll = long long;
 
 template<typename T> 
@@ -21,8 +21,7 @@ void display_factorization(ll num, vector<pair<ll, ll>>& factorization){
 
 /*
     Performs Prime Sieve in the constructor based on the max number you want to factorize.
-    Time Complexity: O(sqrt(max_number) * log(sqrt(max_number)))
-    Uses those primes for factorization.
+    Time Complexity: O(sqrt(max_number) * log(sqrt(max_number))).
 */
 class Factorizer{
 public:
@@ -44,6 +43,7 @@ public:
         fill(prime.begin(), prime.end(), true);
         prime[0] = prime[1] = false;
         prime_list.push_back(2);
+        
         for(int i = 4; i <= limit; i += 2){
             prime[i] = false;
         }
@@ -51,7 +51,7 @@ public:
         for(int i = 3 ; i <= limit; i += 2){
             if(prime[i]){
                 prime_list.push_back(i);
-                for(int j = 2 * i; j <= limit ; j += i){
+                for(int j = i * i; j <= limit ; j += i){
                     prime[j] = false;
                 }
             }
