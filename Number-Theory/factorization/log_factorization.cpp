@@ -4,7 +4,6 @@
 
 class LogFactorizer
 {
-public:
     int n;
     std::vector<long long> smallestPrimeFactor;
 
@@ -30,7 +29,7 @@ public:
         }
     }
 
-
+public:
     LogFactorizer(int limit)
     {
         this->n = limit + 1;
