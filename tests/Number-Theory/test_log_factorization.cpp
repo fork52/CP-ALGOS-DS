@@ -2,10 +2,17 @@
 #include "../../Number-Theory/factorization/log_factorization.cpp"
 
 
-TEST(RANDOM_TEST_FACTORIZATION123, SmallTest) {
+TEST(LogFactorization, SmallTest5) {
     LogFactorizer obj(10);
     std::vector<long long> facts = obj.factorize(5);
     std::vector<long long> expected = {5};
+    EXPECT_EQ(facts, expected);
+}
+
+TEST(LogFactorization, TEST10) {
+    LogFactorizer obj(10);
+    std::vector<long long> facts = obj.factorize(10);
+    std::vector<long long> expected = {2, 5};
     EXPECT_EQ(facts, expected);
 }
 
