@@ -38,6 +38,13 @@ add_executable(
   tests/Graphs/Directed/Binary-Lifting/test_binary_lifting.cpp
 )
 
+# Strings executable
+add_executable(
+  string_tests  
+  tests/Strings/test_poly_hash.cpp
+)
+
+
 # Number-Theory Tests
 target_link_libraries(
   number_theory_tests
@@ -50,6 +57,12 @@ target_link_libraries(
   GTest::gtest_main
 )
 
+# Strings
+target_link_libraries(
+  string_tests
+  GTest::gtest_main
+)
+
 # Graph tests
 target_link_libraries(
   graph_tests
@@ -58,6 +71,8 @@ target_link_libraries(
 
 include(GoogleTest)
 include(Dart)
+
 gtest_discover_tests(number_theory_tests)
 gtest_discover_tests(graph_tests)
 gtest_discover_tests(advanced_data_structure_tests)
+gtest_discover_tests(string_tests)
