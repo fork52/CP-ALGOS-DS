@@ -1,7 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // Reference: https://leetcode.com/problems/implement-trie-prefix-tree/
+#include <string>
 
 // Assumes that you only have lower-case Alphabets
 class Trie
@@ -10,11 +8,21 @@ private:
     Trie *children[26] = {};
     bool isword = false;
 
+    bool isEmptyNode()
+    {
+        for (int i = 0; i < 26; i++)
+        {
+            if (this->children[i])
+                return false;
+        }
+        return true;
+    }
+
 public:
     Trie() {}
 
     /** Inserts a word into the trie. */
-    void insert(string word)
+    void insert(const std::string &word)
     {
         Trie *cur = this;
         for (auto &l : word)
@@ -29,7 +37,7 @@ public:
     }
 
     /** Returns if the word is in the trie. */
-    bool search(string word)
+    bool search(const std::string &word)
     {
         Trie *cur = this;
         for (auto &l : word)
@@ -44,7 +52,7 @@ public:
     }
 
     /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(string prefix)
+    bool startsWith(const std::string& prefix)
     {
         Trie *cur = this;
         for (auto &l : prefix)
@@ -58,7 +66,7 @@ public:
         return cur;
     }
 
-    bool deleteWord(string &word, int index = 0)
+    bool deleteWord(const std::string &word, int index = 0)
     {
         if (index == word.length())
         {
@@ -80,16 +88,6 @@ public:
             return isEmptyNode() && !this->isword;
         }
         return false;
-    }
-
-    bool isEmptyNode()
-    {
-        for (int i = 0; i < 26; i++)
-        {
-            if (this->children[i])
-                return false;
-        }
-        return true;
     }
 };
 
@@ -150,22 +148,22 @@ public:
 //     }
 // };
 
-int main()
-{
+// int main()
+// {
 
-    // Usage of the Trie
-    Trie root = Trie();
+//     // Usage of the Trie
+//     Trie root = Trie();
 
-    string apple = "a";
-    string applet = "ab";
-    root.insert(apple);
-    root.insert(applet);
+//     string apple = "a";
+//     string applet = "ab";
+//     root.insert(apple);
+//     root.insert(applet);
 
-    cout << root.startsWith(apple) << endl;
-    cout << root.startsWith(applet) << endl;
+//     cout << root.startsWith(apple) << endl;
+//     cout << root.startsWith(applet) << endl;
 
-    root.deleteWord(apple, 0);
+//     root.deleteWord(apple, 0);
 
-    cout << root.search(apple) << endl;
-    cout << root.search(applet) << endl;
-}
+//     cout << root.search(apple) << endl;
+//     cout << root.search(applet) << endl;
+// }

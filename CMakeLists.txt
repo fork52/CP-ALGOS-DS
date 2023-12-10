@@ -23,6 +23,12 @@ add_executable(
   tests/Advanced-Data-Structures/test_sparse_table.cpp
 )
 
+# Tree tests executable
+add_executable(
+  tree_tests                  
+  tests/Trees/Tries/test_tries.cpp
+)
+
 # Number Theory executable
 add_executable(
   number_theory_tests                  
@@ -43,6 +49,12 @@ add_executable(
 add_executable(
   string_tests  
   tests/Strings/test_poly_hash.cpp
+)
+
+# Tree Tests
+target_link_libraries(
+  tree_tests
+  GTest::gtest_main
 )
 
 
@@ -77,3 +89,4 @@ gtest_discover_tests(number_theory_tests)
 gtest_discover_tests(graph_tests)
 gtest_discover_tests(advanced_data_structure_tests)
 gtest_discover_tests(string_tests)
+gtest_discover_tests(tree_tests)
