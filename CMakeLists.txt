@@ -20,6 +20,7 @@ enable_testing()
 add_executable(
   advanced_data_structure_tests                  
   tests/Advanced-Data-Structures/test_merge_sort_tree.cpp
+  tests/Advanced-Data-Structures/test_sparse_table.cpp
 )
 
 # Number Theory executable
