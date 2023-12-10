@@ -72,6 +72,5 @@ ll binpow(ll a, ll b, ll m) {
     Reference: https://cp-algorithms.com/algebra/module-inverse.html
 */
 ll get_mod_inverse_fermat(ll num, ll MOD){
-    ll inv = binpow(num, MOD - 2, MOD);
-    return inv;
+    return binpow(num, MOD - 2, MOD);
 }

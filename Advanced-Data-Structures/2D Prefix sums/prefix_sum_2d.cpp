@@ -1,20 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// template<typename T> 
-// void disp_vec(vector<T> &arr){
-//     for(int i = 0; i < arr.size() ; i++){
-//         cout << arr[i] << " ";
-//     }
-//     cout << "\n";
-// }
-
-
 /*
 Reference Problem: https://leetcode.com/problems/count-artifacts-that-can-be-extracted/
 */
-
-
 
 /*
     Data structure for querying a PrefixSums over 2d ranges.

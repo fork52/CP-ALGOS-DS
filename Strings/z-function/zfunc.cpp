@@ -19,8 +19,8 @@ Reference Problem: https://leetcode.com/problems/sum-of-scores-of-built-strings/
 The z-function of a string s of length n is an array of length n,
 where z[i] is the longest common prefix between string s and the substring s[i:].
 
-In other words, is the length of the longest string that is, 
-at the same time, a prefix of and a prefix of the suffix of starting at.
+In other words, z[i] is the length of the longest string that is, 
+at the same time, a prefix of s and a prefix of the suffix of starting at i.
 
 Reference: https://cp-algorithms.com/string/z-function.html
 
