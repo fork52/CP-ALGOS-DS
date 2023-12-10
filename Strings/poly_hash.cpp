@@ -69,12 +69,18 @@ public:
     PolyHash(const char *str)
         : PolyHash(std::vector<char>(str, str + std::strlen(str))) {}
 
+    /**
+     * Indices are 0-indexed and inclusive.
+    */
     uint64_t get_hash(int l, int r)
     {
         int64_t h = pref[r + 1] - modmul(poly_base_pow[r - l + 1], pref[l]);
         return h < 0 ? h + POLY_MOD : h;
     }
 
+    /**
+     * Indices are 0-indexed and inclusive.
+    */
     uint64_t rev_hash(int l, int r)
     {
         int64_t h = suff[l + 1] - modmul(poly_base_pow[r - l + 1], suff[r + 2]);
