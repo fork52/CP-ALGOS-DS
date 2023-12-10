@@ -29,7 +29,7 @@ public:
         lg[1] = 0;
         for (int i = 2; i <= MAXN; i++)
         {
-            lg[i] = lg[i / 2] + 1;
+            lg[i] = lg[i >> 1] + 1;
         }
 
         this->LOGN = lg[MAXN];
@@ -38,10 +38,6 @@ public:
         for (int i = 0; i < MAXN; i++)
         {
             sparseTable[i] = new T[LOGN + 1];
-        }
-
-        for (int i = 0; i < MAXN; i++)
-        {
             sparseTable[i][0] = arr[i];
         }
 
