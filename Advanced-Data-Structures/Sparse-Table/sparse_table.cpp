@@ -61,6 +61,19 @@ public:
         int k = lg[R - L + 1];
         return f(sparseTable[L][k], sparseTable[R - (1 << k) + 1][k]);
     }
+
+        ~SparseTable()
+    {
+        delete[] lg;
+        for (int i = 0; i < MAXN; i++)
+        {
+            delete[] sparseTable[i];
+            sparseTable[i] = nullptr;
+        }
+        delete[] sparseTable;
+        sparseTable = (T**)nullptr;
+        lg = nullptr;
+    }
 };
 
 // int main(){
