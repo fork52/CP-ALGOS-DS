@@ -23,6 +23,12 @@ add_executable(
   tests/Advanced-Data-Structures/test_sparse_table.cpp
 )
 
+# Combinatorics
+add_executable(
+  combinatorics_tests                  
+  tests/Combinatorics/test_general.cpp
+)
+
 # Tree tests executable
 add_executable(
   tree_tests                  
@@ -70,6 +76,13 @@ target_link_libraries(
   GTest::gtest_main
 )
 
+# Combinatorics Tests
+target_link_libraries(
+  combinatorics_tests  
+  GTest::gtest_main
+)
+
+
 # Strings
 target_link_libraries(
   string_tests
@@ -90,3 +103,4 @@ gtest_discover_tests(graph_tests)
 gtest_discover_tests(advanced_data_structure_tests)
 gtest_discover_tests(string_tests)
 gtest_discover_tests(tree_tests)
+gtest_discover_tests(combinatorics_tests)
