@@ -21,14 +21,13 @@ public:
         }
     }
 
-
-    static long long binpow(long long a, long long b, const long long m) {
-        a %= m;
+    static long long binpow(long long a, long long b) {
+        a %= COMBMOD;
         long long res = 1;
         while (b > 0) {
             if (b & 1)
-                res = res * a % m;
-            a = a * a % m;
+                res = res * a % COMBMOD;
+            a = a * a % COMBMOD;
             b >>= 1;
         }
         return res;
@@ -44,7 +43,7 @@ public:
     }
 
     static long long inverse(long long x){
-        return binpow(x, COMBMOD - 2, COMBMOD);
+        return binpow(x, COMBMOD - 2);
     }
 };
 // ----------------------------Combinatorics End -------------------
