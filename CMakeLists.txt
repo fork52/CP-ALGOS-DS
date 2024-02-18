@@ -55,6 +55,7 @@ add_executable(
 add_executable(
   string_tests  
   tests/Strings/test_poly_hash.cpp
+  tests/Strings/test_rabinkarp.cpp
 )
 
 # Tree Tests
