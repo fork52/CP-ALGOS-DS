@@ -30,6 +30,10 @@ class RabinKarp{
         return res;
     }
 
+    long long inverse(long long num, long long RABIN_KARP_MOD){
+        return binpow(num, RABIN_KARP_MOD - 2, RABIN_KARP_MOD);
+    }
+
     void init(){
         if((int)rabin_weight.size() == RABIN_KARP_N)
             return;
@@ -66,6 +70,16 @@ public:
         }
     }
 
+    void push_front(long long val){
+        long long length = (long long)(dq.size());
+        dq.push_front(val);
+        for(int i = 0; i < RABIN_KARP_N; i++){
+            long long power = binpow(rabin_weight[i], length, rabin_mod[i]);
+            long long toAdd = (power * val) % rabin_mod[i];
+            hashes[i] = (hashes[i] + toAdd) % rabin_mod[i];
+        }
+    }
+
     long long pop_front(){
         if(dq.empty()) return -1;
         long long val = dq.front(); dq.pop_front();
@@ -74,6 +88,16 @@ public:
             long long subtract = (val * binpow(rabin_weight[i], length, rabin_mod[i]));
             subtract %= rabin_mod[i];
             hashes[i] = (hashes[i] - subtract + rabin_mod[i]) % rabin_mod[i];
+        }
+        return val;
+    }
+
+    long long pop_back(){
+        if(dq.empty()) return -1;
+        long long val = dq.back(); dq.pop_back();
+        for(int i = 0; i < RABIN_KARP_N; i++){
+            hashes[i] = (hashes[i] - val + rabin_mod[i]) % rabin_mod[i];
+            hashes[i] = (hashes[i] * inverse(rabin_weight[i], rabin_mod[i])) % rabin_mod[i];
         }
         return val;
     }
