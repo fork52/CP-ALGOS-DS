@@ -88,7 +88,7 @@ TEST(RabinKarpTest, BasicTest5) {
     EXPECT_NE(rk1.dq, rk2.dq);
     EXPECT_NE(rk1.hashes, rk2.hashes);
     
-    rk1.push_front('b');
+    rk1.push_front('a');
     rk2.push_back('c');
     EXPECT_EQ(rk1.dq, rk2.dq);
     EXPECT_EQ(rk1.hashes, rk2.hashes);
