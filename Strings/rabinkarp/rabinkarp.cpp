@@ -1,20 +1,24 @@
 #include <array>
 #include <deque>
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <random>
+
 
 // ***********************START RABIN KARP ****************************************
 const long long RABIN_KARP_N = 3;
 
-const long long PRIME_MOD_1 = 100000007ll;
-const long long PRIME_MOD_2 = 100000049ll;
-const long long PRIME_MOD_3 = 10000019ll;
+std::vector<long long> rabin_mod = {
+    100000007ll, 100000049ll, 100030001ll, 99999989ll, 99999847ll, 99991207ll
+};
 
-const long long MUL1 = 401;
-const long long MUL2 = 2129;
-const long long MUL3 = 1009;
+std::vector<long long> rabin_weight = {
+    2297, 3109, 3119, 3617, 4111, 4463
+};
 
 class RabinKarp{
-    static long long binpow(long long a, long long b, long long RABIN_KARP_MOD) {
+    long long binpow(long long a, long long b, long long RABIN_KARP_MOD) {
         a %= RABIN_KARP_MOD;
         long long res = 1;
         while (b > 0) {
@@ -26,17 +30,29 @@ class RabinKarp{
         return res;
     }
 
+    void init(){
+        if((int)rabin_weight.size() == RABIN_KARP_N)
+            return;
+
+        auto rd = std::random_device {}; 
+        auto rng = std::default_random_engine { rd() };
+        std::shuffle(rabin_mod.begin(), rabin_mod.end(), rng);
+        std::shuffle(rabin_weight.begin(), rabin_weight.end(), rng);
+
+        while(rabin_weight.size() > RABIN_KARP_N) rabin_weight.pop_back();
+        while(rabin_mod.size() > RABIN_KARP_N) rabin_mod.pop_back();
+    }
 
 public:
-    const static std::array<long long, RABIN_KARP_N> multipliers;
-    const static std::array<long long, RABIN_KARP_N> primeMods;
-
     std::deque<long long> dq;
-    std::array<long long, RABIN_KARP_N> hashes = {0ll, 0ll};
+    std::array<long long, RABIN_KARP_N> hashes = {0ll, 0ll, 0ll};
 
-    RabinKarp(){}
+    RabinKarp(){
+        init();
+    }
 
     RabinKarp(const std::string& text){
+        RabinKarp();
         for(int i = 0; i < text.size(); i++){
             this->push_back(text[i]);
         }
@@ -45,8 +61,8 @@ public:
     void push_back(long long val){
         dq.push_back(val);
         for(int i = 0; i < RABIN_KARP_N; i++){
-            hashes[i] = (hashes[i] * multipliers[i]) % primeMods[i];
-            hashes[i] = (hashes[i] + val) % primeMods[i];
+            hashes[i] = (hashes[i] * rabin_weight[i]) % rabin_mod[i];
+            hashes[i] = (hashes[i] + val) % rabin_mod[i];
         }
     }
 
@@ -55,9 +71,9 @@ public:
         long long val = dq.front(); dq.pop_front();
         long long length = (long long)(dq.size());
         for(int i = 0; i < RABIN_KARP_N; i++){
-            long long subtract = (val * binpow(multipliers[i], length, primeMods[i]));
-            subtract %= primeMods[i];
-            hashes[i] = (hashes[i] - subtract + primeMods[i]) % primeMods[i];
+            long long subtract = (val * binpow(rabin_weight[i], length, rabin_mod[i]));
+            subtract %= rabin_mod[i];
+            hashes[i] = (hashes[i] - subtract + rabin_mod[i]) % rabin_mod[i];
         }
         return val;
     }
@@ -67,6 +83,4 @@ public:
     }
 };
 
-const std::array<long long, RABIN_KARP_N> RabinKarp::multipliers = {MUL1, MUL2, MUL3};
-const std::array<long long, RABIN_KARP_N> RabinKarp::primeMods = {PRIME_MOD_1, PRIME_MOD_2, PRIME_MOD_3};
 // ***********************END RABIN KARP ****************************************
