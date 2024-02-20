@@ -12,6 +12,7 @@ public:
      * @param COMBMOD Mod to be used for combinatorics.
     */
     Combinatorics(){
+        if(factorial[0] == 1) return;
         factorial[0] = factorial[1] = 1;
         for(long long i = 2; i < COMBMAX; i++){
             factorial[i] = factorial[i - 1] * i;
@@ -40,6 +41,10 @@ public:
 
     long long nPr(long long n, long long r){
         long long ans = (factorial[n] * inverse(factorial[n - r])) % COMBMOD;
+    }
+
+    long long nDistinctObjectsKLabelledBoxes(long long objects, long long boxes){
+        return nCr(objects + boxes - 1ll, objects);
     }
 
     static long long inverse(long long x){
