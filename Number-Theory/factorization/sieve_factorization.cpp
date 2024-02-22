@@ -24,6 +24,26 @@ void display_factorization(ll num, vector<pair<ll, ll>>& factorization){
     Time Complexity: O(sqrt(max_number) * log(sqrt(max_number))).
 */
 class Factorizer{
+    vector<ll> _factors;
+    vector<pair<ll, ll>> _divisors;
+
+   void _findDivisors(ll i, ll num){
+        if(i == (ll)_divisors.size()){
+            _factors.push_back(num);
+            return;
+        }
+
+        // Ignore
+        _findDivisors(i + 1, num);
+
+        // Take
+        auto [prime_num, freq] = _divisors[i];
+        for(int mul = 1; mul <= freq; mul++){
+            num *= prime_num;
+            _findDivisors(i + 1, num);
+        }
+   }
+
 public:
     ll limit;
     vector<bool> prime;
@@ -99,6 +119,23 @@ public:
         return factorization;
     }
 
+
+    /*
+        Returns all divisors of a number including 1 and n
+        in sorted order.
+    */
+   vector<ll> getAllDivisors(ll n){
+        _divisors = prime_factorize(n);
+        _findDivisors(0, 1);
+
+        vector<ll> factors = _factors;
+        std::sort(factors.begin(), factors.end());
+
+        // Reset vectors
+        _factors.clear();  _divisors.clear();
+
+        return factors;    
+   }
 };
 
 

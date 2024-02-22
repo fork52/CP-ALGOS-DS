@@ -39,3 +39,17 @@ TEST(SieveFactorization, CheckPrimes100) {
     vector<ll> expected = {2, 2, 5, 5};
     EXPECT_EQ(facts, expected);
 }
+
+TEST(SieveFactorization, CheckDivisorsSmall) {
+    Factorizer obj(12);
+    vector<ll> facts = obj.getAllDivisors(12);
+    vector<ll> expected = {1, 2, 3, 4, 6, 12};
+    EXPECT_EQ(facts, expected);
+}
+
+TEST(SieveFactorization, CheckDivisorsLarge) {
+    Factorizer obj(120);
+    vector<ll> facts = obj.getAllDivisors(120);
+    vector<ll> expected = {1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120};
+    EXPECT_EQ(facts, expected);
+}
