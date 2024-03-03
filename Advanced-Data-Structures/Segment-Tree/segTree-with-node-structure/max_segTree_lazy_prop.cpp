@@ -1,11 +1,11 @@
 #include "generic_segTree_lazy_prop.cpp"
 
-/******************Start of MinSegTree***************************************/
+/******************Start of MaxSegTree***************************************/
 template <typename T>
-class MinSegTree: public ISegmentTree<T>
+class MaxSegTree: public ISegmentTree<T>
 {
     /* Constructs a segment tree from the array passed*/
-    MinSegTree(int nodeLeft, int nodeRight, const std::vector<T> &arr)
+    MaxSegTree(int nodeLeft, int nodeRight, const std::vector<T> &arr)
     {
         this->nodeLeft = nodeLeft;
         this->nodeRight = nodeRight;
@@ -19,14 +19,14 @@ class MinSegTree: public ISegmentTree<T>
         else
         {
             int mid = (nodeRight - nodeLeft) / 2 + nodeLeft;
-            this->leftChild = new MinSegTree(nodeLeft, mid, arr);
-            this->rightChild = new MinSegTree(mid + 1, nodeRight, arr);
+            this->leftChild = new MaxSegTree(nodeLeft, mid, arr);
+            this->rightChild = new MaxSegTree(mid + 1, nodeRight, arr);
             this->recalculate();
         }
     }
  
     T combine(const T &a, const T &b){
-        return std::min(a, b);
+        return std::max(a, b);
     }
     void applyDeltaOnNode(const T delta){
         this->nodeValue += delta;
@@ -38,7 +38,7 @@ class MinSegTree: public ISegmentTree<T>
  
     T getNodeIdentity(){
         // Change this!
-        return 10000000;
+        return -100000000;
     }
  
     T getLazyIdentity(){
@@ -46,17 +46,17 @@ class MinSegTree: public ISegmentTree<T>
     }
  
 public:
-    static MinSegTree<T> *create(const std::vector<T> &arr)
+    static MaxSegTree<T> *create(const std::vector<T> &arr)
     {
         int n = arr.size();
-        return new MinSegTree<T>(0, n - 1, arr);
+        return new MaxSegTree<T>(0, n - 1, arr);
     }
 };
-/******************End of MinSegTree************************************/
+/******************End of MaxSegTree************************************/
  
 // int main(){
 //     std::vector<int> arr = {1, 2, 3};
-//     MinSegTree<long long> *segtree = MinSegTree<long long>::create(arr);
+//     MaxSegTree<long long> *segtree = MaxSegTree<long long>::create(arr);
 //     int a = 1;
 //     a++;
 // }

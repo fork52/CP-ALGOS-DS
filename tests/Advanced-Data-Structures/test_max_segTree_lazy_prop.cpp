@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
-#include "../../Advanced-Data-Structures/Segment-Tree/segTree-with-node-structure/min_segTree_lazy_prop.cpp"
+#include "../../Advanced-Data-Structures/Segment-Tree/segTree-with-node-structure/max_segTree_lazy_prop.cpp"
 
 // Test prime_sieve Small
-TEST(MinSegTreeTest, BasicMinTest)
+TEST(MaxSegTreeTest, BasicMaxTest)
 {
   std::vector<int> arr = {10, 1, 5, 13, 20, 9, 3, 15, 16, 17, 18};
   int n = arr.size();
-  MinSegTree<int> *segtree = MinSegTree<int>::create(arr);
+  MaxSegTree<int> *segtree = MaxSegTree<int>::create(arr);
 
   std::vector<std::pair<int, int>> indexRanges = {
       {0, 1}, {2, n - 1}, {3, 7}, {0, n - 1}};
@@ -17,17 +17,17 @@ TEST(MinSegTreeTest, BasicMinTest)
     int mn = arr[l];
     for (int j = l; j <= r; j++)
     {
-      mn = std::min(mn, arr[j]);
+      mn = std::max(mn, arr[j]);
     }
     EXPECT_EQ(mn, segtree->rangeQuery(l, r));
   }
 }
 
-TEST(MinSegTreeTest, UpdateWithMinTest)
+TEST(MaxSegTreeTest, UpdateWithMaxTest)
 {
   std::vector<int> arr = {10, 1, 5, 13, 20, 9, 3, 15, 16, 17, 18};
   int n = arr.size();
-  MinSegTree<int> *segtree = MinSegTree<int>::create(arr);
+  MaxSegTree<int> *segtree = MaxSegTree<int>::create(arr);
 
   std::vector<std::tuple<int, int, int, int>> indexRanges = {
       {1, 0, 1, 0}, {2, 1, 5, 4},
@@ -48,7 +48,7 @@ TEST(MinSegTreeTest, UpdateWithMinTest)
     int mn = arr[l];
     for (int j = l; j <= r; j++)
     {
-      mn = std::min(mn, arr[j]);
+      mn = std::max(mn, arr[j]);
     }
     EXPECT_EQ(mn, segtree->rangeQuery(l, r));
   }

@@ -23,6 +23,7 @@ add_executable(
   tests/Advanced-Data-Structures/test_sparse_table.cpp
   tests/Advanced-Data-Structures/test_sum_segTree_lazy_prop.cpp
   tests/Advanced-Data-Structures/test_min_segTree_lazy_prop.cpp
+  tests/Advanced-Data-Structures/test_max_segTree_lazy_prop.cpp
 )
 
 # Combinatorics
