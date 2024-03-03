@@ -63,8 +63,8 @@ public:
  
             if (!isLeaf())
             {
-                this->leftChild->lazy += delta;
-                this->rightChild->lazy += delta;
+                this->leftChild->applyDeltaOnLazy(delta);
+                this->rightChild->applyDeltaOnLazy(delta);
             }
             return;
         }
