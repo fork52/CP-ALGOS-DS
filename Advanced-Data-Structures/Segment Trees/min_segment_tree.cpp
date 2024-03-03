@@ -15,6 +15,7 @@ Related Problems:
 template <typename T>
 class SegmentTree
 {
+public:
     int nodeLeft, nodeRight;
     SegmentTree *leftChild, *rightChild;
     T nodeValue, lazy;
@@ -23,7 +24,7 @@ class SegmentTree
     {
         if (this->lazy != 0)
         {
-            this->nodeValue += this->lazy;
+            applyDelta(this->lazy);
 
             if (!this->isLeaf())
             {
@@ -42,38 +43,18 @@ class SegmentTree
     }
 
     /* Recalculates the min for current node using left and right child mins*/
-    void recalculate(std::function<T(const T &a, const T &b)> &combine)
+    void recalculate()
     {
         if (isLeaf())
             return;
         nodeValue = combine(leftChild->nodeValue, rightChild->nodeValue);
     }
 
-public:
-    /* Constructs a segment tree from the array passed*/
-    SegmentTree(int nodeLeft, int nodeRight, const std::vector<T> &arr,
-                std::function<T(const T &a, const T &b)> &combine)
-    {
-        this->nodeLeft = nodeLeft;
-        this->nodeRight = nodeRight;
-        this->leftChild = this->rightChild = nullptr;
-        this->lazy = 0;
+    virtual T combine(const T &a, const T &b) = 0;
+    virtual void applyDelta(const T delta) = 0;
+    virtual T getIdentity() = 0;
 
-        if (isLeaf())
-        {
-            this->nodeValue = arr[nodeLeft];
-        }
-        else
-        {
-            int mid = (nodeRight - nodeLeft) / 2 + nodeLeft;
-            this->leftChild = new SegmentTree(nodeLeft, mid, arr, combine);
-            this->rightChild = new SegmentTree(mid + 1, nodeRight, arr, combine);
-            this->recalculate(combine);
-        }
-    }
-
-    void rangeUpdate(
-        int query_low, int query_high, T delta, std::function<T(const T &a, const T &b)> &combine)
+    void rangeUpdate(int query_low, int query_high, T delta)
     {
         propagate();
 
@@ -84,7 +65,7 @@ public:
         else if (query_low <= nodeLeft && nodeRight <= query_high)
         {
             // Complete cover
-            this->nodeValue += delta;
+            applyDelta(delta);
 
             if (!isLeaf())
             {
@@ -95,18 +76,18 @@ public:
         }
 
         // Partial cover
-        leftChild->rangeUpdate(query_low, query_high, delta, combine);
-        rightChild->rangeUpdate(query_low, query_high, delta, combine);
-        this->recalculate(combine);
+        leftChild->rangeUpdate(query_low, query_high, delta);
+        rightChild->rangeUpdate(query_low, query_high, delta);
+        this->recalculate();
     }
 
-    T rangeQuery(int query_low, int query_high, T& identity, std::function<T(const T &a, const T &b)> &combine)
+    T rangeQuery(int query_low, int query_high)
     {
         this->propagate();
 
         if (query_high < nodeLeft || query_low > nodeRight)
         { // disjoint
-            return identity;
+            return this->getIdentity();
         }
         else if (query_low <= nodeLeft && nodeRight <= query_high)
         { // complete cover
@@ -116,46 +97,57 @@ public:
         {
             // Partial cover
             return combine(
-                leftChild->rangeQuery(query_low, query_high, identity, combine),
-                rightChild->rangeQuery(query_low, query_high, identity, combine));
+                leftChild->rangeQuery(query_low, query_high),
+                rightChild->rangeQuery(query_low, query_high));
         }
     }
 };
 
-template <typename T>
-class SegmentTreeWrapper
-{
-    std::function<T(const T &a, const T &b)> combine;
-    T identity;
-    SegmentTree<T> *segTree;
 
+
+template <typename T>
+class MinSegTree: public SegmentTree<T>
+{
+    /* Constructs a segment tree from the array passed*/
+    MinSegTree(int nodeLeft, int nodeRight, const std::vector<T> &arr)
+    {
+        this->nodeLeft = nodeLeft;
+        this->nodeRight = nodeRight;
+        this->leftChild = this->rightChild = nullptr;
+        this->lazy = 0;
+
+        if (this->isLeaf())
+        {
+            this->nodeValue = arr[nodeLeft];
+        }
+        else
+        {
+            int mid = (nodeRight - nodeLeft) / 2 + nodeLeft;
+            this->leftChild = new MinSegTree(nodeLeft, mid, arr);
+            this->rightChild = new MinSegTree(mid + 1, nodeRight, arr);
+            this->recalculate();
+        }
+    }
 public:
-    SegmentTreeWrapper(
-        const std::vector<T> &arr,
-        std::function<T(const T &a, const T &b)> combine,
-        T identity) : identity(identity), combine(combine)
+    static MinSegTree<T> *create(const std::vector<T> &arr, T identity)
     {
         int n = arr.size();
-        segTree = new SegmentTree<T>(0, n - 1, arr, combine);
+        return new MinSegTree<T>(0, n - 1, arr);
     }
 
-    T rangeQuery(int l, int r){
-        return segTree->rangeQuery(l, r, identity, combine);
+    T combine(const T &a, const T &b){
+        return std::min(a, b);
     }
-
-    void rangeUpdate(int l, int r, T delta){
-        segTree->rangeUpdate(l, r, delta, combine);
+    void applyDelta(const T delta){
+        this->nodeValue += delta;
+    }
+    T getIdentity(){
+        return (int)1e7;
     }
 };
 
 int main()
 {
     std::vector<int> arr = {1, 2, 3};
-    auto combine = [](int a, int b)
-    {
-        return a > b ? a : b;
-    };
-    SegmentTreeWrapper<int> s(arr, combine, 1e6);
-    int ans = s.rangeQuery(0, 0);
-    ans++;
+
 }
