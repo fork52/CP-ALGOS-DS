@@ -21,6 +21,8 @@ add_executable(
   advanced_data_structure_tests                  
   tests/Advanced-Data-Structures/test_merge_sort_tree.cpp
   tests/Advanced-Data-Structures/test_sparse_table.cpp
+  tests/Advanced-Data-Structures/test_sum_segTree_lazy_prop.cpp
+  tests/Advanced-Data-Structures/test_min_segTree_lazy_prop.cpp
 )
 
 # Combinatorics
