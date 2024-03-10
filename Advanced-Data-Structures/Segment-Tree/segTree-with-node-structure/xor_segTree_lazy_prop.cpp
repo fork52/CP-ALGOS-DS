@@ -31,6 +31,7 @@ class XorSegTree : public ISegmentTree<T>
     {
         return a ^ b;
     }
+    
     void applyDeltaOnNode(const T delta)
     {
         int range = this->nodeRight - this->nodeLeft + 1;
@@ -66,6 +67,4 @@ public:
 // int main(){
 //     std::vector<int> arr = {1, 2, 3};
 //     XorSegTree<long long> *segtree = XorSegTree<long long>::create(arr);
-//     int a = 1;
-//     a++;
 // }
