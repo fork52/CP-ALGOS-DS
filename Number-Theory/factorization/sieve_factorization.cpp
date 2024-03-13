@@ -62,7 +62,7 @@ public:
             if (prime[i])
             {
                 prime_list.push_back(i);
-                for (int j = i * i; j <= limit; j += i)
+                for (long long j = i * i; j <= limit; j += i)
                 {
                     prime[j] = false;
                 }
