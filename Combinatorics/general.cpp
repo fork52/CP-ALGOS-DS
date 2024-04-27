@@ -1,3 +1,10 @@
+
+/**
+ * @snip-start
+ * snip-name: combinatorics
+ * snip-prefix: combinatorics
+ * snip-description: Combinatorics Template
+*/
 // ----------------------------Combinatorics Start -----------------
 // CHANGE COMBMAX AS PER YOUR NEEDS. MIND THE CONSTRAINTS!!!
 const long long COMBMAX = 1e5;
@@ -52,3 +59,4 @@ public:
     }
 };
 // ----------------------------Combinatorics End -------------------
+// @snip-end

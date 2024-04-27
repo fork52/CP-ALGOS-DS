@@ -3,6 +3,14 @@
 
 /* Sieve of eratosthenes */
 
+
+
+/**
+ * @snip-start
+ * snip-name: prime_sieve
+ * snip-prefix: prime_sieve
+ * snip-description: Prime sieve
+*/
 /* Returns a std::vector of size n*/
 std::vector<bool> bool_prime_sieve(long long n){
     std::vector<bool> prime(n + 1, true);
@@ -20,6 +28,7 @@ std::vector<bool> bool_prime_sieve(long long n){
     }
     return prime;
 }
+// @snip-end
 
 
 /*

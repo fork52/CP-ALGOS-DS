@@ -13,6 +13,14 @@ void disp_vec(std::vector<T> &arr){
     std::cout << "\n";
 }
 
+
+
+/**
+ * @snip-start
+ * snip-name: sqrt_factorization
+ * snip-prefix: sqrt_factorization
+ * snip-description: Square_root_factorization
+*/
 /*
     Returns the prime factorization of a number in the form:
     (prime1, cnt1), (prime2, cnt2) ....
@@ -84,7 +92,7 @@ void display_factorization(ll num, std::vector<std::pair<ll, ll>>& factorization
     }
     std::cout << "\n";
 }
-
+// @snip-end
 
 int main(){
     ll num = 220;

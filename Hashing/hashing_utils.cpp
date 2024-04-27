@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 
-// Hashing Pairs
+/**
+ * @snip-start
+ * snip-name: pairHash
+ * snip-prefix: pairHash,hashPair
+ * snip-description: Hash a pair of integers/logs
+*/
 struct pair_hash
 {
     static uint64_t splitmix64(uint64_t x)
@@ -18,3 +23,4 @@ struct pair_hash
         return splitmix64(x.first + FIXED_RANDOM) ^ (splitmix64(x.second + FIXED_RANDOM) >> 1);
     }
 };
+// @snip-end

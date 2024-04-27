@@ -1,7 +1,13 @@
 // Reference: https://leetcode.com/problems/implement-trie-prefix-tree/
 #include <string>
 
-// Assumes that you only have lower-case Alphabets
+
+/**
+ * @snip-start
+ * snip-name: trie
+ * snip-prefix: trie
+ * snip-description: Standard trie
+*/
 class Trie
 {
 private:
@@ -90,6 +96,7 @@ public:
         return false;
     }
 };
+// @snip-end
 
 /* Will work for all ascii strings */
 // class Generic_Trie

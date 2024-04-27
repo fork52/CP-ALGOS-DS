@@ -1,7 +1,10 @@
 using ll = long long;
 
-/*
-    Computes a ^ b under mod m 
+/**
+ * @snip-start
+ * snip-name: binpow
+ * snip-prefix: binpow
+ * snip-description: Binary exponentiation
 */
 ll binpow(ll a, ll b, ll m) {
     a %= m;
@@ -14,3 +17,4 @@ ll binpow(ll a, ll b, ll m) {
     }
     return res;
 }
+// @snip-end

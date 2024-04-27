@@ -2,9 +2,11 @@
 #include <complex>
 #include <algorithm>
 
-/*
-    Performs Prime Sieve in the constructor based on the max number you want to factorize.
-    Time Complexity: O(sqrt(max_number) * log(sqrt(max_number))).
+/**
+ * @snip-start
+ * snip-name: SieveFactorizer
+ * snip-prefix: sieve_factorization
+ * snip-description: Sieve Factorization
 */
 class Factorizer
 {
@@ -137,6 +139,7 @@ public:
         return factors;
     }
 };
+// @snip-end
 
 // int main(){
 //     ll num = 1e9;

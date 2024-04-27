@@ -3,6 +3,13 @@
 #include <iostream>
 #include <algorithm>
 
+
+/**
+ * @snip-start
+ * snip-name: LogFactorizer
+ * snip-prefix: log_factorization
+ * snip-description: Log Factorization
+*/
 class LogFactorizer
 {
     long long n;
@@ -115,6 +122,9 @@ public:
         return primeFactors;
     }
 };
+// @snip-end
+
+
 // int main(){
 //     Factorizer obj(10);
 //     std::vector<long long> facts = obj.factorize(10);
