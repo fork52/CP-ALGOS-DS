@@ -3,7 +3,12 @@
 
 // Credits: https://github.com/sgtlaugh/algovault/blob/master/code_library/hashing.cpp
 
-
+/**
+ * @snip-start
+ * snip-name: PolyHash
+ * snip-prefix: polyhash
+ * snip-description: Polynomial hashing
+*/
 // -------------------------------- POLY HASH START-------------------------------------------
 const int POLY_HASH_MAX_LEN = 1e6 + 10;
 constexpr uint64_t POLY_MOD = (1ULL << 61) - 1;
@@ -88,4 +93,5 @@ public:
     }
 };
 // -------------------------------- POLY HASH END -------------------------------------------
+// @snip-end
 
