@@ -13,6 +13,13 @@ References:
     3) CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
 */
 
+
+/**
+ * @snip-start
+ * snip-name: FenwickTree Point Update Range Query
+ * snip-prefix: fenwick_PURQ
+ * snip-description: FenwickTree Point Update Range Query
+*/
 /*
     Implementation of classic Fenwick Tree(1-based indexing) supporting:
     Point Increments/Updates and Range Queries.
@@ -100,6 +107,8 @@ public:
         }
     }
 };
+// @snip-end
+
 
 int main()
 {

@@ -5,6 +5,13 @@ using namespace std;
 Reference Problem: https://leetcode.com/problems/count-artifacts-that-can-be-extracted/
 */
 
+
+/**
+ * @snip-start
+ * snip-name: PrefixSum-2d
+ * snip-prefix: prefixsum2d
+ * snip-description: Prefix Sum 2D
+*/
 /*
     Data structure for querying a PrefixSums over 2d ranges.
 */
@@ -45,6 +52,8 @@ public:
         return add1 + add2 - sub1 - sub2;
     }
 };
+// @snip-end
+
 
 int main(){
     vector<vector<int>> mat = {

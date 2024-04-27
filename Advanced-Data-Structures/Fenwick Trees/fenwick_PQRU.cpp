@@ -9,6 +9,13 @@ References:
     1) CP-algos: https://cp-algorithms.com/data_structures/fenwick.html
 */
 
+
+/**
+ * @snip-start
+ * snip-name: FenwickTree Point Query Range Update
+ * snip-prefix: fenwick_PQRU
+ * snip-description: FenwickTree Point Query Range Update
+*/
 /*
     Implementation of Fenwick Tree supporting:
     Range Increments and point query
@@ -106,3 +113,4 @@ public:
         point_add(r + 1, -delta);
     }
 };
+// @snip-end

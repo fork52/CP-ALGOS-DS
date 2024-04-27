@@ -2,6 +2,12 @@
 #include <vector>
 
 /**
+ * @snip-start
+ * snip-name: MergeSortTree
+ * snip-prefix: mergesorttree
+ * snip-description: Merge Sort Tree
+*/
+/**
  * Class representing Merge Sort Tree.
  * @note You can modify the query function as per your problem.
  */
@@ -72,6 +78,8 @@ public:
         }
     }
 };
+// @snip-end
+
 
 // Usage
 // int main(){

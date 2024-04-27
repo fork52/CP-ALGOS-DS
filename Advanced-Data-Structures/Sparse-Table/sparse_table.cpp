@@ -1,6 +1,13 @@
 #include <vector>
 #include <functional>
 
+
+/**
+ * @snip-start
+ * snip-name: SparseTable
+ * snip-prefix: sparsetable
+ * snip-description: Generic Sparse table
+*/
 /**
  * Generic implementation of sparse table. Everything is 0-indexed!
  */
@@ -75,6 +82,8 @@ public:
         lg = nullptr;
     }
 };
+// @snip-end
+
 
 // int main(){
 //     std::vector<int> arr = {1, 2, 3, 4};

@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+/**
+ * @snip-start
+ * snip-name: Count-Inversions Fenwick Tree
+ * snip-prefix: count_inversions
+ * snip-description: simple-fenwick-tree
+*/
 template< typename T1>
 class Fenwick_Tree{
 public:
@@ -13,7 +20,7 @@ public:
     /* Constructs a Fenwick Tree for the given array*/
     Fenwick_Tree(int size){
         n = size + 1;
-        fenwick = vector<T1>( n , 0 );
+        fenwick = vector<T1>(n , 0);
     }
 
 
@@ -67,7 +74,7 @@ void rescale(vector<int> &arr){
         arr[i] = seen[arr[i]];
     }
 }
-
+// @snip-end
 
 
 
